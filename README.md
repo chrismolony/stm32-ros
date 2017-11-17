@@ -8,6 +8,7 @@
 ### 数据上传
 移动底座实时上传机器人运动参数，包括位置、速度、角速度、偏航角等信息。
 ![](mobile-base/tab2.png)
+
 x-position: 机器人实时x坐标位置y-position: 机器人实时y 坐标位置
 x-velocity: 机器人 实时x坐标方向速度y-velocity：机器人实时y坐标方向速度
 angular velocity: 机器人当前角速度
