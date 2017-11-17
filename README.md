@@ -3,18 +3,22 @@
 机器人移动底座通过串口与ROS主控系统交互通信，ROS主控系统通过发布速度、角速度等信息控制移动底座按既定要求运动；移动底座通过串口实时上传机器人位置、运动角度等信息到ROS主控系统。
 数据接收
 ****
+
 |head|head|Linear_velocity_x|Linear_velocity_y|angular_v|CRC|
 |---|---|---
 |0xff|0xff|float|float|float|unsigned char|
+
 ****
 
 移动底座接收ROS主控系统发布过来的运动控制命令，包括线速度、角速度等信息，并附带CRC校验，数据包总长度为15字节。校验算法为将有效数据取异或，即从第三个字节开始取异或。
 数据上传
 移动底座实时上传机器人运动参数，包括位置、速度、角速度、偏航角等信息。
 ****
+
 |head|head|x-position|y-position|x-speed|y-speed|angular-speed|pose-angular|CRC|
 |---|---|---
 |0xaa|0xaa|float|float|float|float|float|float|u8|
+
 ****
 x-position: 机器人实时x坐标位置y-position: 机器人实时y 坐标位置
 x-velocity: 机器人 实时x坐标方向速度y-velocity：机器人实时y坐标方向速度
