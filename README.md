@@ -2,28 +2,32 @@
 ## 概述
 机器人移动底座通过串口与ROS主控系统交互通信，ROS主控系统通过发布速度、角速度等信息控制移动底座按既定要求运动；移动底座通过串口实时上传机器人位置、运动角度等信息到ROS主控系统。
 数据接收
-head|head|Linear_velocity_x|Linear_velocity_y|angular_v|CRC
----|---|---
-0xff|0xff|float|float|float|unsigned char
+****
+|head|head|Linear_velocity_x|Linear_velocity_y|angular_v|CRC|
+|---|---|---
+|0xff|0xff|float|float|float|unsigned char|
+****
 
 移动底座接收ROS主控系统发布过来的运动控制命令，包括线速度、角速度等信息，并附带CRC校验，数据包总长度为15字节。校验算法为将有效数据取异或，即从第三个字节开始取异或。
 数据上传
 移动底座实时上传机器人运动参数，包括位置、速度、角速度、偏航角等信息。
-head|head|x-position|y-position|x-speed|y-speed|angular-speed|pose-angular|CRC
----|---|---
-0xaa|0xaa|float|float|float|float|float|float|u8
+****
+|head|head|x-position|y-position|x-speed|y-speed|angular-speed|pose-angular|CRC|
+|---|---|---
+|0xaa|0xaa|float|float|float|float|float|float|u8|
+****
 x-position: 机器人实时x坐标位置y-position: 机器人实时y 坐标位置
 x-velocity: 机器人 实时x坐标方向速度y-velocity：机器人实时y坐标方向速度
 angular velocity: 机器人当前角速度
 pose angular: 机器人当前偏航角度
 数据上传的总长度为27字节
 ## 使用
-一 准备
-	将STM32的串口3 与运行ROS系统的串口进行连接 波特率设置为115200  8bits 1stop 无校验模式，将STM32的串口1连接到电脑的一个串口，进行调试信息的观察，建议使用putty连接 串口波特率 9600 8bits 1stop even parity 模式
-二 ROS 节点
+* 准备
+将STM32的串口3 与运行ROS系统的串口进行连接 波特率设置为115200  8bits 1stop 无校验模式，将STM32的串口1连接到电脑的一个串口，进行调试信息的观察，建议使用putty连接 串口波特率 9600 8bits 1stop even parity 模式
+* ROS 节点
 1 编译
 ROS节点文件名为my_serial_node ，将源文件解压放置~/catkin_ws/src目录下，回到~/catkin_ws目录下进行编译，该节点需要使用 serial库 直接clone https://github.com/wjwwood/serial至本地，并与my_serial_node放置在同一级目录即可，回到~/catkin_ws$进行编译
-	编译命令：catkin_make 
+编译命令：catkin_make 
 之后会生成节点my_serial_node
 2 测试
 如果提示串口打不开，需要修改一下串口权限 sudo chmod a+x /dev/ttyUSB0
