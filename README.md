@@ -14,8 +14,8 @@ x-velocity: 机器人 实时x坐标方向速度y-velocity：机器人实时y坐�
 angular velocity: 机器人当前角速度
 pose angular: 机器人当前偏航角度
 数据上传的总长度为27字节
-## 使用
-* 准备
+# 使用
+* STM32
 将STM32的串口3 与运行ROS系统的串口进行连接 波特率设置为:
 ```
  115200  8bits 1stop no parity
@@ -25,13 +25,12 @@ pose angular: 机器人当前偏航角度
  9600 8bits 1stop even parity 
 ```
 * ROS 节点
-1 编译
 ROS 节点文件名为 my_serial_node ，将源文件解压放置~/catkin_ws/src 目录下，回到 ~/catkin_ws 目录下进行编译，该节点需要使用 serial库 直接clone [serial](https://github.com/wjwwood/serial) 至本地，并与 my_serial_node 放置在同一级目录即可，回到 ~/catkin_ws$ 进行编译:
 ```
  $catkin_make 
 ```
 之后会生成节点 my_serial_node
-2 测试
+# 测试
 如果提示串口打不开，需要修改一下串口权限
 ```
  $sudo chmod a+x /dev/ttyUSB0
