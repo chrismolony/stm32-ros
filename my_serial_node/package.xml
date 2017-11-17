@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package>
+  <name> my_serial_node</name>
+  <version>0.0.0</version>
+  <description>my serial node </description>
+
+  <author email="steven_1825@163.com">Steven</author>
+
+  <maintainer email="steven_1825@163.com">Steven</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>serial</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <run_depend>serial</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>nav_msgs</run_depend>
+  <run_depend>tf</run_depend>
+
+</package>
